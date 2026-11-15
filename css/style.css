@@ -578,6 +578,29 @@ figure { margin: 0; }
   color: rgba(255, 246, 231, 0.7);
 }
 
+/* ---------- 7. RUNNING TEXT (TRUST) ---------- */
+@keyframes trust-running {
+  0%   { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+.trust-running {
+  display: inline-block;
+  white-space: nowrap;
+  padding: 0 100%;
+  animation: trust-running 26s linear infinite;
+}
+.trust-running strong {
+  display: block;
+  font-family: var(--font-judul);
+  font-size: 1.02rem;
+  color: var(--kuning);
+  line-height: 1.2;
+}
+.trust-running span {
+  font-size: 0.82rem;
+  color: rgba(255, 246, 231, 0.7);
+}
+
 /* ---------- 8. SEKSI & KARTU ---------- */
 .grid-4 {
   list-style: none;

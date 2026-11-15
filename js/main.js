@@ -72,6 +72,36 @@
     // Pengaman: kalau browser tidak pernah memberi laporan,
     // semua konten tetap ditampilkan (tidak ada konten yang tersembunyi).
     setTimeout(function () {
+
+  /* ---------- 2a. RUNNING TEXT (TRUST) ---------- */
+  var elemenTrustRunning = document.querySelectorAll(".trust-running");
+  if (!kurangiGerak && "IntersectionObserver" in window) {
+    var pemantauTrust = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("muncul");
+            pemantauTrust.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: "0px 0px -10% 0px", threshold: 0.1 }
+    );
+
+    elemenTrustRunning.forEach(function (elemen) {
+      elemen.classList.add("reveal");
+      pemantauTrust.observe(elemen);
+    });
+
+    // Pengaman: kalau browser tidak pernah memberi laporan,
+    // semua konten tetap ditampilkan (tidak ada konten yang tersembunyi).
+    setTimeout(function () {
+      elemenTrustRunning.forEach(function (elemen) {
+        elemen.classList.add("tampil");
+      });
+    }, 2000);
+  }
+
       elemenReveal.forEach(function (elemen) {
         elemen.classList.add("tampil");
       });
