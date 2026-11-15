@@ -3,8 +3,9 @@
    Isi:
    1. Menu mobile
    2. Efek muncul saat scroll
-   3. Form reseller -> WhatsApp
-   4. Tahun di footer
+   3. Running text (marquee)
+   4. Form reseller -> WhatsApp
+   5. Tahun di footer
    Semua opsional: halaman tetap berfungsi penuh tanpa JavaScript.
    ========================================================================== */
 
@@ -43,13 +44,14 @@
   }
 
   /* ---------- 2. EFEK MUNCUL SAAT SCROLL ---------- */
+  var kurangiGerak = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
   var elemenReveal = document.querySelectorAll(
     ".grid-4 > li, .produk, .cerita-grid > *, .trust-list > li, .foto-strip > li," +
-    " .oleh-oleh-grid > *, .testimoni-kosong, .reseller-grid > *, .faq-item," +
+    " .oleh-oleh-grid > *, .testimoni-kosong, .reseller-grid > *," +
+    " .reseller-manfaat > li, .nama-354-kartu, .faq-item," +
     " .cta-blok, .closing-inner"
   );
-
-  var kurangiGerak = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   if (!kurangiGerak && "IntersectionObserver" in window) {
     var pemantau = new IntersectionObserver(
@@ -72,43 +74,32 @@
     // Pengaman: kalau browser tidak pernah memberi laporan,
     // semua konten tetap ditampilkan (tidak ada konten yang tersembunyi).
     setTimeout(function () {
-
-  /* ---------- 2a. RUNNING TEXT (TRUST) ---------- */
-  var elemenTrustRunning = document.querySelectorAll(".trust-running");
-  if (!kurangiGerak && "IntersectionObserver" in window) {
-    var pemantauTrust = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("muncul");
-            pemantauTrust.unobserve(entry.target);
-          }
-        });
-      },
-      { rootMargin: "0px 0px -10% 0px", threshold: 0.1 }
-    );
-
-    elemenTrustRunning.forEach(function (elemen) {
-      elemen.classList.add("reveal");
-      pemantauTrust.observe(elemen);
-    });
-
-    // Pengaman: kalau browser tidak pernah memberi laporan,
-    // semua konten tetap ditampilkan (tidak ada konten yang tersembunyi).
-    setTimeout(function () {
-      elemenTrustRunning.forEach(function (elemen) {
-        elemen.classList.add("tampil");
-      });
-    }, 2000);
-  }
-
       elemenReveal.forEach(function (elemen) {
         elemen.classList.add("tampil");
       });
     }, 2000);
   }
 
-  /* ---------- 3. FORM RESELLER -> WHATSAPP ---------- */
+  /* ---------- 3. RUNNING TEXT (MARQUEE) ---------- */
+  /*
+    Isi baris disalin dua kali, lalu seluruh track digeser -50%.
+    Karena panjang kedua salinan sama persis, saat salinan pertama keluar
+    layar, salinan kedua sudah tepat di posisi yang pas.
+    Hasilnya: loop mulus, tidak ada loncatan dan tidak ada jeda kosong.
+  */
+  var trackMarquee = document.querySelectorAll("[data-marquee]");
+
+  Array.prototype.forEach.call(trackMarquee, function (track) {
+    var grup = track.querySelector(".marquee-grup");
+    if (!grup) return;
+
+    var salinan = grup.cloneNode(true);
+    salinan.setAttribute("aria-hidden", "true");
+    track.appendChild(salinan);
+    track.classList.add("siap");
+  });
+
+  /* ---------- 4. FORM RESELLER -> WHATSAPP ---------- */
   var formReseller = document.getElementById("form-reseller");
 
   if (formReseller) {
@@ -145,7 +136,7 @@
     });
   }
 
-  /* ---------- 4. TAHUN DI FOOTER ---------- */
+  /* ---------- 5. TAHUN DI FOOTER ---------- */
   var tahun = document.getElementById("tahun");
   if (tahun) tahun.textContent = String(new Date().getFullYear());
 })();

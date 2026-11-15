@@ -145,6 +145,11 @@ figure { margin: 0; }
 
 .container-narrow { max-width: 780px; }
 
+/* biar judul seksi tidak ketutup header lengket saat link di-klik */
+section[id], .closing, .cta-blok[id] {
+  scroll-margin-top: 88px;
+}
+
 .section { padding-block: 56px; }
 
 .section-alt { background: var(--krem); }
@@ -240,6 +245,14 @@ figure { margin: 0; }
   color: var(--krem);
 }
 
+/* tombol khusus reseller: beda dari tombol pembeli, biar kelihatan "beli grosir" */
+.btn-merah {
+  background: var(--merah);
+  color: #fff;
+  box-shadow: 0 8px 18px -12px rgba(216, 35, 31, 0.95);
+}
+.btn-merah:hover { background: var(--merah-tua); }
+
 /* ---------- 5. HEADER & NAVIGASI ---------- */
 .site-header {
   position: sticky;
@@ -273,23 +286,25 @@ figure { margin: 0; }
 .brand-text {
   display: flex;
   flex-direction: column;
-  line-height: 1.1;
+  line-height: 1;
 }
-.brand-text strong {
+
+/* 354 = aset brand utama, selalu paling menonjol di dalam lockup */
+.brand-angka {
   font-family: var(--font-judul);
-  font-size: 1.15rem;
-}
-.brand-text span {
-  font-size: 0.74rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(36, 18, 16, 0.65);
-}
-.brand-text b {
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
   color: var(--merah);
-  font-family: var(--font-judul);
-  font-size: 0.95rem;
-  letter-spacing: 0.06em;
+}
+
+.brand-nama {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: rgba(36, 18, 16, 0.72);
+  margin-top: 4px;
 }
 
 .nav-toggle {
@@ -531,26 +546,6 @@ figure { margin: 0; }
   opacity: 0.75;
 }
 
-/* tag harga: biar pengunjung langsung tahu harga pembuka */
-.hero-tag-harga {
-  position: absolute;
-  right: 12px;
-  bottom: 14px;
-  margin: 0;
-  background: var(--kertas);
-  color: var(--tinta);
-  font-size: 0.85rem;
-  font-weight: 600;
-  padding: 8px 14px;
-  border-radius: var(--radius-tombol);
-  box-shadow: 0 12px 22px -16px rgba(42, 18, 16, 0.9);
-}
-.hero-tag-harga b {
-  font-family: var(--font-judul);
-  font-size: 1rem;
-  color: var(--merah);
-}
-
 /* ---------- 7. BADGE TRUST ---------- */
 .trust {
   background: var(--kakao);
@@ -563,6 +558,7 @@ figure { margin: 0; }
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 14px 18px;
+  margin-top: 22px;
 }
 
 .trust-list strong {
@@ -578,27 +574,62 @@ figure { margin: 0; }
   color: rgba(255, 246, 231, 0.7);
 }
 
-/* ---------- 7. RUNNING TEXT (TRUST) ---------- */
-@keyframes trust-running {
-  0%   { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
+/* ---------- 7b. RUNNING TEXT / MARQUEE ---------- */
+/*
+  Satu baris teks panjang yang jalan terus ke kiri.
+  Isi group diulang dua kali oleh JavaScript, lalu track digeser -50%,
+  jadi》: saat satu group keluar layar, group berikutnya sudah tepat di posisi.
+  Tidak ada loncatan dan tidak ada jeda kosong.
+*/
+.marquee {
+  overflow: hidden;
+  padding-block: 12px;
+  border-bottom: 1px solid var(--garis-terang);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
 }
-.trust-running {
-  display: inline-block;
-  white-space: nowrap;
-  padding: 0 100%;
-  animation: trust-running 26s linear infinite;
+
+.marquee-track {
+  display: flex;
+  width: max-content;
 }
-.trust-running strong {
-  display: block;
+
+/* animasi baru jalan setelah JavaScript berhasil menyalin group-nya,
+   jadi kalau JS mati, teksnya tetap tampil utuh dan bisa dibaca */
+.marquee-track.siap {
+  animation: marquee-jalan 55s linear infinite;
+}
+
+.marquee-grup {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  gap: 16px;
+  padding-right: 16px;
+}
+
+.marquee-item {
   font-family: var(--font-judul);
-  font-size: 1.02rem;
-  color: var(--kuning);
-  line-height: 1.2;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 246, 231, 0.82);
+  white-space: nowrap;
 }
-.trust-running span {
-  font-size: 0.82rem;
-  color: rgba(255, 246, 231, 0.7);
+
+.marquee-354 {
+  color: var(--kuning);
+}
+
+.marquee-pisah {
+  color: var(--merah);
+  letter-spacing: 0;
+}
+
+@keyframes marquee-jalan {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 
 /* ---------- 8. SEKSI & KARTU ---------- */
@@ -829,6 +860,39 @@ figure { margin: 0; }
   margin-bottom: 18px;
 }
 
+/* ---------- 12b. KENAPA NAMANYA 354 ---------- */
+.nama-354 { background: var(--krem); }
+
+.nama-354-kartu {
+  display: grid;
+  gap: 16px;
+  justify-items: start;
+  background: #fff;
+  border: 1px solid var(--garis);
+  border-radius: var(--radius-besar);
+  padding: 26px;
+  box-shadow: var(--bayang-kartu);
+  max-width: 660px;
+}
+
+.nama-354-angka {
+  font-family: var(--font-judul);
+  font-weight: 800;
+  font-size: 3.2rem;
+  line-height: 0.9;
+  color: var(--merah);
+  background: var(--kuning);
+  padding: 0.06em 0.22em 0.12em;
+  border-radius: 0.14em;
+  box-shadow: 0.07em 0.07em 0 0 var(--merah-tua);
+}
+
+.nama-354-isi {
+  margin: 0;
+  color: rgba(36, 18, 16, 0.8);
+  max-width: 56ch;
+}
+
 /* ---------- 12. TESTIMONI ---------- */
 .testimoni-kosong {
   margin-top: 22px;
@@ -876,6 +940,81 @@ figure { margin: 0; }
 }
 
 /* ---------- 13. RESELLER & FORM ---------- */
+/*
+  Seksi reseller punya perlakuan visual sendiri:
+  latar kuning, garis merah tebal, dan label besar.
+  Tujuannya cuma satu: waktu user scroll cepat, seksi ini kelihatan langsung.
+*/
+.reseller {
+  background: var(--kuning);
+  color: var(--tinta);
+  border-top: 4px solid var(--merah-tua);
+  border-bottom: 4px solid var(--merah-tua);
+}
+
+.reseller .judul-seksi { max-width: 20ch; }
+
+.reseller .sub-judul { color: rgba(36, 18, 16, 0.78); }
+
+.label-reseller {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--kakao);
+  color: var(--kuning);
+  font-family: var(--font-judul);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 9px 18px;
+  border-radius: var(--radius-tombol);
+  margin: 0 0 16px;
+  box-shadow: 0 12px 24px -16px rgba(42, 18, 16, 0.95);
+}
+
+.reseller-manfaat {
+  list-style: none;
+  display: grid;
+  gap: 14px;
+  margin: 26px 0 30px;
+}
+
+.manfaat {
+  background: #fff;
+  border: 2px solid var(--merah-tua);
+  border-radius: var(--radius);
+  padding: 18px;
+}
+
+.manfaat-ikon {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--merah);
+  color: #fff;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.manfaat h3 {
+  font-size: 1.05rem;
+  margin: 0 0 6px;
+}
+
+.manfaat p {
+  margin: 0;
+  font-size: 0.94rem;
+  color: rgba(36, 18, 16, 0.78);
+}
+
+.reseller .paket { background: #fff; }
+.reseller .formulir { background: #fff; }
+.reseller .cta-reseller { margin-top: 0; }
+
 .reseller-grid {
   display: grid;
   gap: 26px;
@@ -917,6 +1056,9 @@ figure { margin: 0; }
   font-size: 0.85rem;
   color: rgba(36, 18, 16, 0.62);
 }
+
+/* di atas latar kuning, teksnya dibuat lebih gelap biar kontrasnya cukup */
+.reseller .foto-reseller figcaption { color: rgba(36, 18, 16, 0.82); }
 
 .daftar-cek {
   list-style: none;
@@ -1057,7 +1199,7 @@ figure { margin: 0; }
 .closing .cta-teks { max-width: 52ch; }
 .closing-catatan {
   font-size: 0.85rem;
-  color: rgba(255, 246, 231, 0.65);
+  color: rgba(255, 246, 231, 0.82);
   margin: 10px 0 0;
 }
 
@@ -1081,16 +1223,35 @@ figure { margin: 0; }
   padding: 8px;
 }
 
-.footer-nama {
+.footer-lockup {
   margin: 14px 0 0;
-  font-family: var(--font-judul);
-  font-size: 1.5rem;
-  line-height: 1.15;
+  display: flex;
+  flex-direction: column;
 }
-.footer-nama b {
+
+.footer-354 {
+  font-family: var(--font-judul);
+  font-size: 2.6rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--merah);
+}
+
+.footer-nama {
+  font-family: var(--font-judul);
+  font-size: 1.05rem;
+  line-height: 1.2;
+  color: var(--krem);
+  margin-top: 8px;
+}
+
+.footer-khas {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
   color: var(--kuning);
-  font-size: 1.15rem;
-  letter-spacing: 0.04em;
+  margin-top: 8px;
 }
 
 .footer-tagline {
@@ -1230,6 +1391,14 @@ figure { margin: 0; }
     transition: none;
   }
   .btn, .wa-apung { transition: none; }
+  /* marquee berhenti bergerak, teksnya tetap bisa dibaca */
+  .marquee {
+    overflow-x: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .marquee-track { animation: none; }
+  .marquee-track.siap { animation: none; }
 }
 
 /* ---------- 19. LAYAR LEBIH BESAR ---------- */
@@ -1251,6 +1420,10 @@ figure { margin: 0; }
     align-items: center;
     padding: 32px;
   }
+
+  .reseller-manfaat { grid-template-columns: repeat(2, 1fr); }
+
+  .nama-354-kartu { padding: 30px 34px; }
 
   .cerita-foto {
     grid-template-columns: 1.4fr 1fr;
@@ -1370,6 +1543,8 @@ figure { margin: 0; }
   }
 
   .grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+  .reseller-manfaat { grid-template-columns: repeat(3, 1fr); }
 
   .grid-produk { grid-template-columns: repeat(3, 1fr); }
 
