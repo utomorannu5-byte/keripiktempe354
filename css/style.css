@@ -194,6 +194,7 @@ section[id], .closing, .cta-blok[id] {
 .grid-4 > *,
 .foto-strip > *,
 .oleh-oleh-grid > *,
+.lokasi-grid > *,
 .tanya-jawab,
 .trust-list > * {
   min-width: 0;
@@ -578,13 +579,20 @@ section[id], .closing, .cta-blok[id] {
 /*
   Satu baris teks panjang yang jalan terus ke kiri.
   Isi group diulang dua kali oleh JavaScript, lalu track digeser -50%,
-  jadi》: saat satu group keluar layar, group berikutnya sudah tepat di posisi.
+  jadi saat satu group keluar layar, group berikutnya sudah tepat di posisi.
   Tidak ada loncatan dan tidak ada jeda kosong.
 */
 .marquee {
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
   padding-block: 12px;
   border-bottom: 1px solid var(--garis-terang);
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Setelah JS menyalin grup, baris dianimasikan dan scrollbar disembunyikan. */
+.marquee.siap {
+  overflow: hidden;
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
   mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
 }
@@ -860,37 +868,62 @@ section[id], .closing, .cta-blok[id] {
   margin-bottom: 18px;
 }
 
-/* ---------- 12b. KENAPA NAMANYA 354 ---------- */
-.nama-354 { background: var(--krem); }
-
-.nama-354-kartu {
+/* ---------- 12b. LOKASI & JAM BUKA ---------- */
+.lokasi-grid {
   display: grid;
-  gap: 16px;
-  justify-items: start;
+  gap: 22px;
+}
+
+.lokasi-info {
+  display: grid;
+  gap: 22px;
+  align-content: start;
   background: #fff;
   border: 1px solid var(--garis);
   border-radius: var(--radius-besar);
   padding: 26px;
   box-shadow: var(--bayang-kartu);
-  max-width: 660px;
 }
 
-.nama-354-angka {
-  font-family: var(--font-judul);
-  font-weight: 800;
-  font-size: 3.2rem;
-  line-height: 0.9;
-  color: var(--merah);
-  background: var(--kuning);
-  padding: 0.06em 0.22em 0.12em;
-  border-radius: 0.14em;
-  box-shadow: 0.07em 0.07em 0 0 var(--merah-tua);
-}
-
-.nama-354-isi {
+.lokasi-detail {
+  display: grid;
+  gap: 16px;
   margin: 0;
-  color: rgba(36, 18, 16, 0.8);
-  max-width: 56ch;
+}
+.lokasi-detail dt {
+  margin-bottom: 3px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--merah);
+}
+.lokasi-detail dd {
+  margin: 0;
+  color: rgba(36, 18, 16, 0.78);
+}
+
+.lokasi-aksi {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.lokasi-peta {
+  position: relative;
+  min-height: 320px;
+  overflow: hidden;
+  background: var(--krem);
+  border: 1px solid var(--garis);
+  border-radius: var(--radius-besar);
+  box-shadow: var(--bayang-kartu);
+}
+.lokasi-peta iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  border: 0;
 }
 
 /* ---------- 12. TESTIMONI ---------- */
@@ -1134,6 +1167,24 @@ section[id], .closing, .cta-blok[id] {
   margin: 10px 0 0;
 }
 
+/* Form ini hanya berfungsi dengan JavaScript; tanpa JS tampilkan tautan WA. */
+html:not(.js) #form-reseller { display: none; }
+
+.form-fallback {
+  margin: 14px 0 0;
+  padding: 12px 14px;
+  border: 1px solid var(--garis);
+  border-radius: var(--radius-s);
+  background: rgba(245, 194, 67, 0.18);
+  color: rgba(36, 18, 16, 0.78);
+  font-size: 0.92rem;
+}
+
+.form-fallback a {
+  color: var(--merah-tua);
+  font-weight: 700;
+}
+
 /* daftar tanya-jawab reseller */
 .tanya-jawab {
   margin-top: 12px;
@@ -1312,6 +1363,40 @@ section[id], .closing, .cta-blok[id] {
 }
 .footer-kontak a:hover { color: var(--krem); }
 
+.footer-sosmed {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.footer-sosmed a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 10px 5px 8px;
+  background: rgba(255, 246, 231, 0.06);
+  border: 1px solid var(--garis-terang);
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+.footer-sosmed a:hover {
+  color: var(--krem);
+  background: rgba(255, 246, 231, 0.12);
+  border-color: rgba(255, 246, 231, 0.3);
+}
+.footer-sosmed span {
+  font-size: 0.86rem;
+  letter-spacing: 0;
+  text-transform: none;
+  color: inherit;
+}
+.footer-sosmed .ikon-sosmed {
+  width: 17px;
+  height: 17px;
+  flex: none;
+}
+
 .footer-bawah {
   border-top: 1px solid var(--garis-terang);
   padding-block: 18px 26px;
@@ -1338,6 +1423,116 @@ section[id], .closing, .cta-blok[id] {
   padding: 12px 18px;
   border-radius: var(--radius-tombol);
   box-shadow: 0 14px 30px -14px rgba(37, 211, 102, 0.85);
+}
+
+.sosmed-apung {
+  position: fixed;
+  right: 16px;
+  bottom: calc(84px + env(safe-area-inset-bottom, 0px));
+  z-index: 46;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.sosmed-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 16px;
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--kakao);
+  background: var(--kuning);
+  border: 1px solid rgba(42, 18, 16, 0.18);
+  border-radius: var(--radius-tombol);
+  cursor: pointer;
+  box-shadow: 0 12px 26px -14px rgba(42, 18, 16, 0.7);
+  transition: background 0.18s ease;
+}
+.sosmed-toggle:hover { background: var(--oren); }
+.sosmed-toggle:focus-visible {
+  outline: 3px solid var(--kakao);
+  outline-offset: 2px;
+}
+.sosmed-apung.is-terbuka .sosmed-toggle { background: var(--oren); }
+.sosmed-toggle svg { flex: none; }
+
+.sosmed-panel {
+  width: min(260px, calc(100vw - 32px));
+  padding: 10px;
+  background: var(--kertas);
+  border: 1px solid var(--garis);
+  border-radius: var(--radius);
+  box-shadow: 0 22px 46px -20px rgba(42, 18, 16, 0.6);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+}
+.sosmed-apung.is-terbuka .sosmed-panel {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.sosmed-panel-judul {
+  margin: 2px 6px 8px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(36, 18, 16, 0.55);
+}
+
+.sosmed-daftar {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 2px;
+}
+.sosmed-daftar a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px;
+  border-radius: 12px;
+  color: var(--tinta);
+  text-decoration: none;
+  transition: background 0.16s ease;
+}
+.sosmed-daftar a:hover { background: rgba(245, 194, 67, 0.22); }
+.sosmed-daftar a:focus-visible {
+  outline: 2px solid var(--kakao);
+  outline-offset: -2px;
+}
+.sosmed-ikon {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  flex: none;
+  border-radius: 50%;
+  background: rgba(245, 194, 67, 0.3);
+  color: var(--kakao);
+}
+.sosmed-ikon svg { width: 19px; height: 19px; }
+.sosmed-teks {
+  display: grid;
+  gap: 1px;
+  line-height: 1.2;
+  min-width: 0;
+}
+.sosmed-teks b { font-size: 0.92rem; }
+.sosmed-teks > span {
+  font-size: 0.78rem;
+  color: rgba(36, 18, 16, 0.6);
+  overflow-wrap: anywhere;
 }
 
 .bar-bawah {
@@ -1368,8 +1563,16 @@ section[id], .closing, .cta-blok[id] {
 .bar-bawah .btn { margin-left: auto; white-space: nowrap; }
 
 @media (max-width: 999px) {
-  /* ruang supaya bar WhatsApp bawah tidak menutupi isi */
-  body { padding-bottom: 84px; }
+  /* ruang supaya bar WhatsApp bawah + tombol sosial tidak menutupi isi */
+  body { padding-bottom: 148px; }
+
+  .sosmed-toggle {
+    width: 48px;
+    height: 48px;
+    min-height: 48px;
+    padding: 0;
+  }
+  .sosmed-toggle span { display: none; }
 }
 
 /* ---------- 18. ANIMASI REVEAL ---------- */
@@ -1390,9 +1593,10 @@ section[id], .closing, .cta-blok[id] {
     transform: none;
     transition: none;
   }
-  .btn, .wa-apung { transition: none; }
+  .btn, .wa-apung, .sosmed-toggle, .sosmed-panel { transition: none; }
   /* marquee berhenti bergerak, teksnya tetap bisa dibaca */
-  .marquee {
+  .marquee,
+  .marquee.siap {
     overflow-x: auto;
     -webkit-mask-image: none;
     mask-image: none;
@@ -1423,7 +1627,7 @@ section[id], .closing, .cta-blok[id] {
 
   .reseller-manfaat { grid-template-columns: repeat(2, 1fr); }
 
-  .nama-354-kartu { padding: 30px 34px; }
+  .lokasi-info { padding: 30px 34px; }
 
   .cerita-foto {
     grid-template-columns: 1.4fr 1fr;
@@ -1444,7 +1648,7 @@ section[id], .closing, .cta-blok[id] {
   }
 
   .footer-grid { grid-template-columns: 1fr 2fr; }
-  .footer-nav { grid-template-columns: repeat(3, 1fr); }
+  .footer-nav { grid-template-columns: repeat(2, 1fr); }
   .footer-kontak {
     grid-column: 1 / -1;
     border-top: 1px solid var(--garis-terang);
@@ -1454,38 +1658,7 @@ section[id], .closing, .cta-blok[id] {
     grid-template-columns: repeat(2, 1fr);
     gap: 16px 24px;
   }
-  .footer-kontak h2 {
-  font-size: 0.78rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--kuning);
-  margin: 0 0 10px;
-}
-.footer-kontak ul {
-  list-style: none;
-  display: grid;
-  gap: 12px;
-}
-.footer-kontak span {
-  display: block;
-  font-size: 0.72rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(255, 246, 231, 0.62);
-}
-.footer-kontak p,
-.footer-kontak a {
-  margin: 0;
-  color: rgba(255, 246, 231, 0.78);
-  font-size: 0.92rem;
-}
-.footer-kontak a {
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-.footer-kontak a:hover { color: var(--krem); }
-
-.footer-bawah {
+  .footer-bawah {
     grid-template-columns: 1fr 1fr;
     align-items: center;
   }
@@ -1552,6 +1725,11 @@ section[id], .closing, .cta-blok[id] {
     grid-template-columns: 1.05fr 1fr;
     gap: 44px;
     align-items: center;
+  }
+
+  .lokasi-grid {
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 30px;
   }
 
   .reseller-grid {

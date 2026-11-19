@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- ============ SEO DASAR ============ -->
+<title>{{site.title}}</title>
+<meta name="description" content="{{site.description}}">
+<meta name="keywords" content="{{site.keywords}}">
+<meta name="author" content="{{site.author}}">
+<meta name="robots" content="index, follow, max-image-preview:large">
+{{#if canonical}}
+<link rel="canonical" href="{{canonical}}">
+{{/if}}
+
+<!-- ============ OPEN GRAPH / SOSIAL ============ -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="{{site.locale}}">
+<meta property="og:site_name" content="{{brand.name}}">
+{{#if canonical}}
+<meta property="og:url" content="{{canonical}}">
+{{/if}}
+<meta property="og:title" content="{{site.title}}">
+<meta property="og:description" content="{{site.ogDescription}}">
+{{#if ogImage}}
+<meta property="og:image" content="{{ogImage}}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="1600">
+<meta property="og:image:alt" content="Kemasan {{brand.fullName}} di rak supermarket">
+{{/if}}
+<meta name="twitter:card" content="{{twitterCard}}">
+<meta name="twitter:title" content="{{site.title}}">
+<meta name="twitter:description" content="{{site.ogDescription}}">
+{{#if ogImage}}
+<meta name="twitter:image" content="{{ogImage}}">
+{{/if}}
+<meta name="theme-color" content="{{site.themeColor}}">
+
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/favicon-180.png">
+<link rel="manifest" href="site.webmanifest">
+
+<link rel="stylesheet" href="css/style.css">
+
+<!-- penanda bahwa JS aktif (dipakai CSS untuk animasi reveal) -->
+<script>document.documentElement.classList.add('js');</script>
+
+<!-- ============ DATA TERSTRUKTUR (SEO) ============ -->
+<script type="application/ld+json">
+{{{jsonLd.localBusiness}}}
+</script>
+
+<script type="application/ld+json">
+{{{jsonLd.itemList}}}
+</script>
+
+<script type="application/ld+json">
+{{{jsonLd.faq}}}
+</script>
+</head>
+
+<body data-wa="{{contact.whatsapp.international}}">
+
+<a class="skip-link" href="#isi">Langsung ke isi utama</a>
+
+<!-- ================= HEADER ================= -->
+<header class="site-header" id="atas">
+  <div class="container header-inner">
+    <a class="brand" href="#atas" aria-label="{{brand.fullName}}, ke beranda">
+      <img src="assets/logo.webp" width="150" height="105" alt="Logo {{brand.fullName}}" class="brand-logo">
+      <span class="brand-text">
+        <span class="brand-nama">Keripik Tempe<br>Tiga Saudara</span>
+        <strong class="brand-angka">354</strong>
+      </span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Navigasi utama">
+      <ul class="nav-list">
+        <li><a href="#kenapa">Kenapa enak</a></li>
+        <li><a href="#produk">Produk</a></li>
+        <li><a href="#cerita">Cerita kami</a></li>
+        <li><a href="#reseller">Reseller</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <a class="btn btn-wa nav-cta"
+         href="{{wa.header}}"
+         target="_blank" rel="noopener noreferrer">Pesan via WhatsApp</a>
+    </nav>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav">
+      <span class="nav-toggle-bars" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="sr-only">Buka menu</span>
+    </button>
+  </div>
+</header>
+
+<main id="isi">
+
+<!-- ================= 1. HERO ================= -->
+<section class="hero" aria-labelledby="hero-judul">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <div class="hero-merek">
+        <img src="assets/logo.webp" width="150" height="105" alt="Logo {{brand.fullName}}" class="hero-logo">
+        <p class="eyebrow">Camilan tradisional</p>
+      </div>
+
+      <h1 id="hero-judul" class="hero-title">
+        <span class="sr-only">{{brand.fullName}}, camilan tradisional</span>
+        <span class="hero-title-1" aria-hidden="true">Keripik Tempe</span>
+        <span class="hero-title-2" aria-hidden="true">Tiga Saudara</span>
+        <span class="hero-angka" aria-hidden="true">354</span>
+      </h1>
+
+      <p class="hero-tagline">{{brand.tagline}}</p>
+
+      <p class="hero-sub">
+        Tempe kedelai dan tapioka, digoreng dengan bumbu pilihan.
+        Enak buat teman ngemil, dan sering dibawa pulang sebagai oleh-oleh.
+      </p>
+
+      <div class="hero-cta">
+        <a class="btn btn-wa btn-besar"
+           href="{{wa.hero}}"
+           target="_blank" rel="noopener noreferrer">Pesan lewat WhatsApp</a>
+        <a class="btn btn-hantu btn-besar" href="#produk">Lihat varian produk</a>
+      </div>
+
+      <ul class="mini-bukti" aria-label="Info produk">
+        <li>Halal</li>
+        <li>P-IRT {{legal.pirt}}</li>
+        <li>BPOM MD</li>
+        <li>Kedelai &amp; tapioka</li>
+      </ul>
+    </div>
+
+    <div class="hero-foto">
+      <picture>
+        <source type="image/webp"
+                srcset="assets/produk/rak-kemasan-480.webp 480w,
+                        assets/produk/rak-kemasan-900.webp 900w,
+                        assets/produk/rak-kemasan-1200.webp 1200w"
+                sizes="(max-width: 1000px) 92vw, 48vw">
+        <img src="assets/produk/rak-kemasan-1200.jpg"
+             srcset="assets/produk/rak-kemasan-480.jpg 480w,
+                     assets/produk/rak-kemasan-900.jpg 900w,
+                     assets/produk/rak-kemasan-1200.jpg 1200w"
+             sizes="(max-width: 1000px) 92vw, 48vw"
+             width="1200" height="1600"
+             alt="Deretan kemasan {{brand.fullName}} di rak supermarket, logo 354 terlihat di kemasan"
+             fetchpriority="high" decoding="async">
+      </picture>
+
+      <figure class="hero-foto-kecil">
+        <picture>
+          <source type="image/webp"
+                  srcset="assets/produk/proses-kemasan-480.webp 480w,
+                          assets/produk/proses-kemasan-900.webp 900w"
+                  sizes="34vw">
+          <img src="assets/produk/proses-kemasan-900.jpg"
+               srcset="assets/produk/proses-kemasan-480.jpg 480w,
+                       assets/produk/proses-kemasan-900.jpg 900w"
+               sizes="34vw"
+               width="1200" height="1600"
+               alt="Close up keripik tempe yang baru digoreng, renyah dan kecokelatan"
+               decoding="async">
+        </picture>
+      </figure>
+
+      <p class="hero-stiker">
+        <strong>Fresh digoreng</strong>
+        <span>tiap hari</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TRUST / MARQUEE ================= -->
+<section class="trust" aria-label="Keamanan produk dan asal">
+
+  <!-- Running text: branding yang jalan terus, satu arah, tanpa jeda -->
+  <div class="marquee">
+    <div class="marquee-track" data-marquee>
+      <div class="marquee-grup">
+        <span class="marquee-item">HALAL</span>
+        <span class="marquee-item marquee-pisah" aria-hidden="true">•</span>
+        <span class="marquee-item">P-IRT</span>
+        <span class="marquee-item marquee-pisah" aria-hidden="true">•</span>
+        <span class="marquee-item">BPOM MD</span>
+        <span class="marquee-item marquee-pisah" aria-hidden="true">•</span>
+        <span class="marquee-item">DIPRODUKSI DI BOGOR</span>
+        <span class="marquee-item marquee-pisah" aria-hidden="true">•</span>
+        <span class="marquee-item">TIPIS DAN RENYAH</span>
+        <span class="marquee-item marquee-pisah" aria-hidden="true">•</span>
+        <span class="marquee-item">GURIH BAWANG</span>
+        <span class="marquee-item marquee-pisah" aria-hidden="true">•</span>
+        <span class="marquee-item">COCOK UNTUK OLEH-OLEH</span>
+        <span class="marquee-item marquee-pisah" aria-hidden="true">•</span>
+        <span class="marquee-item">MELAYANI RESELLER</span>
+        <span class="marquee-item marquee-pisah" aria-hidden="true">•</span>
+        <span class="marquee-item">KIRIM KE BERBAGAI DAERAH</span>
+        <span class="marquee-item marquee-pisah" aria-hidden="true">•</span>
+        <span class="marquee-item marquee-354">KERIPIK TEMPE 354</span>
+        <span class="marquee-item marquee-pisah" aria-hidden="true">•</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <ul class="trust-list">
+      <li>
+        <strong>Halal</strong>
+        <span>Logo halal tercantum di kemasan</span>
+      </li>
+      <li>
+        <strong>P-IRT {{legal.pirt}}</strong>
+        <span>Nomor izin produksi pangan dan industri</span>
+      </li>
+      <li>
+        <strong>BPOM MD {{legal.bpom}}</strong>
+        <span>Nomor izin ini juga ada di label</span>
+      </li>
+      <li>
+        <strong>Bogor</strong>
+        <span>Diproduksi di workshop kami sendiri</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= 2. KENAPA ENAK ================= -->
+<section class="section" id="kenapa" aria-labelledby="kenapa-judul">
+  <div class="container">
+    <p class="label-seksi">Kenapa enak</p>
+    <h2 id="kenapa-judul" class="judul-seksi">Empat hal yang bikin orang beli lagi</h2>
+
+    <ol class="grid-4">
+      <li class="kartu kartu-nomor">
+        <span class="nomor">01</span>
+        <h3>Tipis dan renyah</h3>
+        <p>Tempe dipotong tipis lalu ditekan ringan sebelum digoreng. Kaku di tangan, renyah sampai gigitan terakhir.</p>
+      </li>
+      <li class="kartu kartu-nomor">
+        <span class="nomor">02</span>
+        <h3>Gurihnya terasa</h3>
+        <p>Bawang putih, bawang merah, dan cabai digoreng bareng lalu dicampur. Aroma wangi, rasanya nempel.</p>
+      </li>
+      <li class="kartu kartu-nomor">
+        <span class="nomor">03</span>
+        <h3>Digoreng tiap pagi</h3>
+        <p>Tempe segar diolah tiap hari, langsung digoreng, langsung dikemas. Tidak ada stok lama yang ditunggu.</p>
+      </li>
+      <li class="kartu kartu-nomor">
+        <span class="nomor">04</span>
+        <h3>Harga masuk akal</h3>
+        <p>Harga tidak mahal-mahal. Yang penting keripiknya enak dan uangnya sampai ke tangan penjualnya.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================= 3. PRODUK ================= -->
+<section class="section section-alt" id="produk" aria-labelledby="produk-judul">
+  <div class="container">
+    <p class="label-seksi">Produk</p>
+    <h2 id="produk-judul" class="judul-seksi">Beberapa Kemasan Pilihan</h2>
+    <p class="sub-judul">
+      Harga dan promo terbaru, tanya saja adminnya. Stok dan varian juga bisa
+      dicek lewat WhatsApp.
+    </p>
+
+    <ul class="grid-produk">
+      {{#each products}}
+      <li class="kartu produk">
+        <div class="produk-foto">
+          <picture>
+            <source type="image/webp"
+                    srcset="{{image.srcsetWebp}}"
+                    sizes="{{image.sizes}}">
+            <img src="{{image.src}}"
+                 srcset="{{image.srcsetJpg}}"
+                 sizes="{{image.sizes}}"
+                 width="{{image.width}}" height="{{image.height}}"
+                 alt="{{image.alt}}"
+                 loading="lazy" decoding="async">
+          </picture>
+          {{#if badge}}
+          <span class="produk-badge{{#if badgePlain}} produk-badge-plain{{/if}}">{{badge}}</span>
+          {{/if}}
+        </div>
+        <div class="produk-isi">
+          <h3>{{name}}</h3>
+          <p class="produk-meta">{{meta}}</p>
+          {{#if priceLabel}}
+          <p class="produk-harga">{{priceLabel}}</p>
+          {{/if}}
+          <p class="produk-ket">{{description}}</p>
+          <a class="btn btn-wa"
+             href="{{waUrl}}"
+             target="_blank" rel="noopener noreferrer">Pesan {{weight}} gram</a>
+        </div>
+      </li>
+      {{/each}}
+    </ul>
+
+    <p class="harga-catatan">
+      Harga, promo, dan ongkir bisa berubah. Untuk info terbaru, tanya admin
+      lewat WhatsApp.
+    </p>
+
+    <!-- CTA setelah produk -->
+    <div class="cta-blok">
+      <div>
+        <h2 class="cta-judul">Mau pesan, tapi masih ragu soal varian?</h2>
+        <p class="cta-teks">Kirim chat, nanti kami bantu pilihkan ukuran yang paling pas buat kebutuhanmu.</p>
+      </div>
+      <a class="btn btn-wa btn-besar"
+         href="{{wa.variantHelp}}"
+         target="_blank" rel="noopener noreferrer">Tanya admin di WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 4. CERITA + CARA BUAT ================= -->
+<section class="section cerita" id="cerita" aria-labelledby="cerita-judul">
+  <div class="container">
+    <p class="label-seksi label-terang">Cerita singkat</p>
+    <h2 id="cerita-judul" class="judul-seksi judul-terang">Bahan tempe, diolah jadi camilan yang bisa dibawa ke mana-mana</h2>
+
+    <div class="cerita-grid">
+      <div class="cerita-teks">
+        <p>
+          Di Indonesia, tempe itu bahan sehari-hari. Dipakai buat sambal, buat
+          lauk, buat ngemil.
+        </p>
+        <p>
+          {{brand.name}} mulai dari situ: tempe yang dibiarin kering,
+          diiris tipis, lalu digoreng sampai renyah. Terakhir jadi camilan yang
+          bisa dibawa pulang buat oleh-oleh.
+        </p>
+
+        <h3 class="sub-judul-sub">Cara membuatnya</h3>
+        <ol class="langkah">
+          <li><strong>Tempe segar setiap hari</strong> — tempe segar langsung diolah, nggak ditahan semalaman.</li>
+          <li><strong>Iris dan press</strong> — diiris tipis lalu ditekan ringan. Pori-porinya terbuka, makanya keripiknya ringan dan renyah.</li>
+          <li><strong>Goreng bareng bumbu</strong> — minyak baru, suhu dijaga, bumbu pilihan digunakan.</li>
+          <li><strong>Tiris dan kemas</strong> — Tiriskan, dinginkan sebentar, dikemas rapat. Tiap batch kami catat tanggal produksinya.</li>
+        </ol>
+      </div>
+
+      <div class="cerita-foto">
+        <picture class="foto-utama">
+          <source type="image/webp"
+                  srcset="assets/produk/proses-kemasan-480.webp 480w,
+                          assets/produk/proses-kemasan-900.webp 900w,
+                          assets/produk/proses-kemasan-1200.webp 1200w"
+                  sizes="(max-width: 1000px) 92vw, 38vw">
+          <img src="assets/produk/proses-kemasan-1200.jpg"
+               srcset="assets/produk/proses-kemasan-480.jpg 480w,
+                       assets/produk/proses-kemasan-900.jpg 900w,
+                       assets/produk/proses-kemasan-1200.jpg 1200w"
+               sizes="(max-width: 1000px) 92vw, 38vw"
+               width="1200" height="1600"
+               alt="Proses mengemasan keripik tempe di workshop Bogor"
+               loading="lazy" decoding="async">
+        </picture>
+        <picture class="foto-kecil">
+          <source type="image/webp"
+                  srcset="assets/produk/stok-gudang-480.webp 480w,
+                          assets/produk/stok-gudang-900.webp 900w,
+                          assets/produk/stok-gudang-1400.webp 1400w"
+                  sizes="(max-width: 1000px) 44vw, 20vw">
+          <img src="assets/produk/stok-gudang-1400.jpg"
+               srcset="assets/produk/stok-gudang-480.jpg 480w,
+                       assets/produk/stok-gudang-900.jpg 900w,
+                       assets/produk/stok-gudang-1400.jpg 1400w"
+               sizes="(max-width: 1000px) 44vw, 20vw"
+               width="1600" height="1200"
+               alt="Karung-karung keripik tempe siap kirim di gudang"
+               loading="lazy" decoding="async">
+        </picture>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LOKASI & JAM BUKA ================= -->
+<section class="section lokasi" id="lokasi" aria-labelledby="lokasi-judul">
+  <div class="container">
+    <p class="label-seksi">Lokasi &amp; jam buka</p>
+    <h2 id="lokasi-judul" class="judul-seksi">Mampir ke workshop kami di Gunung Putri</h2>
+    <p class="sub-judul">
+      Mau ambil langsung atau lihat stoknya dulu? Chat admin sebelum datang,
+      biar pesanan dan waktu kedatanganmu sudah kami siapkan.
+    </p>
+
+    <div class="lokasi-grid">
+      <div class="kartu lokasi-info">
+        <dl class="lokasi-detail">
+          <div>
+            <dt>Alamat</dt>
+            <dd>{{contact.address.full}}</dd>
+          </div>
+          <div>
+            <dt>Jam buka</dt>
+            <dd>{{contact.hours}}</dd>
+          </div>
+          <div>
+            <dt>Sebelum datang</dt>
+            <dd>Chat admin dulu supaya stok dan waktu kedatanganmu pasti.</dd>
+          </div>
+        </dl>
+
+        <div class="lokasi-aksi">
+          <a class="btn btn-merah"
+             href="{{contact.mapsUrl}}"
+             target="_blank" rel="noopener noreferrer">Buka di Google Maps</a>
+          <a class="btn btn-wa"
+             href="{{wa.visit}}"
+             target="_blank" rel="noopener noreferrer">Chat sebelum mampir</a>
+        </div>
+      </div>
+
+      <div class="lokasi-peta">
+        <iframe
+          src="{{contact.mapsEmbedUrl}}"
+          title="Peta lokasi {{brand.fullName}}"
+          width="600" height="450"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= OLEH-OLEH BOGOR (SEO lokal) ================= -->
+<section class="section section-alt" id="oleh-oleh" aria-labelledby="oleh-oleh-judul">
+  <div class="container">
+    <p class="label-seksi">Oleh-oleh dari Bogor</p>
+    <h2 id="oleh-oleh-judul" class="judul-seksi">Keripik tempe Bogor yang ringan dibawa pulang</h2>
+
+    <div class="oleh-oleh-grid">
+      <div>
+        <p>
+          {{brand.fullName}} sering dipilih sebagai oleh-oleh dari
+          Bogor karena ringan dibawa dan tahan disimpan. Kemasan 100 gram muat
+          di tas, dan keripiknya masih renyah walau sudah dibuka berhari-hari.
+        </p>
+        <p>
+          Kalau cari camilan khas Bogor yang bisa dibagikan ke banyak orang,
+          kemasannya tersedia mulai 100 gram sampai 200 gram. Untuk oleh-oleh
+          dalam jumlah banyak, kami bisa kirim repack ke alamat tujuan.
+        </p>
+        <p>
+          Produknya digoreng di Bogor dan sudah tersedia di rak supermarket,
+          jadi bisa juga dibeli langsung di toko tanpa pesanan.
+        </p>
+      </div>
+
+      <div class="kartu kartu-fakta">
+        <h3>Kenapa cocok buat oleh-oleh</h3>
+        <ul class="daftar-cek">
+          <li>Ringan, nggak berat dibawa di perjalanan.</li>
+          <li>Tahan disimpan, nggak gampang melempem.</li>
+          <li>Kemasan rapi, gampang dibagikan ke banyak orang.</li>
+        </ul>
+        <a class="btn btn-wa btn-penuh"
+           href="{{wa.gift}}"
+           target="_blank" rel="noopener noreferrer">Tanya harga oleh-oleh</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOTO PRODUK ================= -->
+<section class="section" id="foto" aria-labelledby="foto-judul">
+  <div class="container">
+    <p class="label-seksi">Dari rak dan workshop kami</p>
+    <h2 id="foto-judul" class="judul-seksi">Foto produknya asli, bukan foto stok</h2>
+
+    <ul class="foto-strip">
+      <li>
+        <picture>
+          <source type="image/webp"
+                  srcset="assets/produk/label-harga-480.webp 480w,
+                          assets/produk/label-harga-900.webp 900w"
+                  sizes="(max-width: 720px) 88vw, 30vw">
+          <img src="assets/produk/label-harga-900.jpg"
+               srcset="assets/produk/label-harga-480.jpg 480w,
+                       assets/produk/label-harga-900.jpg 900w"
+               sizes="(max-width: 720px) 88vw, 30vw"
+               width="1200" height="1600"
+               alt="Kemasan {{brand.fullName}} di rak AEON"
+               loading="lazy" decoding="async">
+        </picture>
+        <span>Label di rak: 100 gram</span>
+      </li>
+      <li>
+        <picture>
+          <source type="image/webp"
+                  srcset="assets/produk/proses-kemasan-480.webp 480w,
+                          assets/produk/proses-kemasan-900.webp 900w"
+                  sizes="(max-width: 720px) 88vw, 30vw">
+          <img src="assets/produk/proses-kemasan-900.jpg"
+               srcset="assets/produk/proses-kemasan-480.jpg 480w,
+                       assets/produk/proses-kemasan-900.jpg 900w"
+               sizes="(max-width: 720px) 88vw, 30vw"
+               width="1200" height="1600"
+               alt="Irisan keripik tempe yang baru digoreng"
+               loading="lazy" decoding="async">
+        </picture>
+        <span>Baru keluar dari wajan</span>
+      </li>
+      <li>
+        <picture>
+          <source type="image/webp"
+                  srcset="assets/produk/karung-bulk-480.webp 480w,
+                          assets/produk/karung-bulk-900.webp 900w"
+                  sizes="(max-width: 720px) 88vw, 30vw">
+          <img src="assets/produk/karung-bulk-900.jpg"
+               srcset="assets/produk/karung-bulk-480.jpg 480w,
+                       assets/produk/karung-bulk-900.jpg 900w"
+               sizes="(max-width: 720px) 88vw, 30vw"
+               width="1600" height="1200"
+               alt="Karung bulk keripik tempe untuk partner reseller"
+               loading="lazy" decoding="async">
+        </picture>
+        <span>Karung bulk untuk partner reseller</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= 5. TESTIMONI ================= -->
+<section class="section section-alt" id="testimoni" aria-labelledby="testimoni-judul">
+  <div class="container">
+    <p class="label-seksi">Testimoni</p>
+    <h2 id="testimoni-judul" class="judul-seksi">Testimoni dari pembeli</h2>
+
+    <!--
+      Area ini disiapkan untuk testimoni asli.
+      Belum ada testimoni yang masuk, jadi bagiannya masih kosong.
+      Kalau sudah ada review asli, ganti <div class="testimoni-kosong"> di bawah
+      dengan <ul class="grid-testimoni"> berisi kartu testimoni (contoh ada di
+      file README.md).
+    -->
+    <div class="testimoni-kosong">
+      <div>
+        <h3>Sedang mengumpulkan ulasan pelanggan</h3>
+        <p>
+          Kalau kamu sudah pernah membeli, kirim foto atau ulasan ke admin.
+          Kami senang menampilkan pengalaman pelanggan apa adanya.
+        </p>
+      </div>
+      <a class="btn btn-wa"
+         href="{{wa.review}}"
+         target="_blank" rel="noopener noreferrer">Kirim ulasan ke admin</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 6. RESELLER ================= -->
+<section class="section reseller" id="reseller" aria-labelledby="reseller-judul">
+  <div class="container">
+    <p class="label-reseller"><span aria-hidden="true">📦</span> Program Reseller</p>
+    <h2 id="reseller-judul" class="judul-seksi">Jual ulang {{brand.productName}} di tokomu</h2>
+    <p class="sub-judul">
+      Untuk pemilik toko, kios, dan yang jualan lewat grup WhatsApp. Order pertama
+      boleh mulai dari sampel, jadi modalnya nggak perlu besar.
+    </p>
+
+    <ul class="reseller-manfaat">
+      <li class="kartu manfaat">
+        <span class="manfaat-ikon" aria-hidden="true">✓</span>
+        <h3>Harga khusus volume</h3>
+        <p>Daftar harga per kilo.</p>
+      </li>
+      <li class="kartu manfaat">
+        <span class="manfaat-ikon" aria-hidden="true">✓</span>
+        <h3>Kemasan siap jual</h3>
+        <p>Repack 1 kg, 5 kg, dan 25 kg. Bisa repack pakai label toko kamu.</p>
+      </li>
+      <li class="kartu manfaat">
+        <span class="manfaat-ikon" aria-hidden="true">✓</span>
+        <h3>Foto produk boleh dipakai</h3>
+        <p>Foto produknya boleh dipakai buat katalog dan konten media sosial.</p>
+      </li>
+      <li class="kartu manfaat">
+        <span class="manfaat-ikon" aria-hidden="true">✓</span>
+        <h3>Pengiriman ke berbagai daerah</h3>
+        <p>Kirim ke luar Jawa lewat ekspedisi. Volume besar, ongkir per kilo makin murah.</p>
+      </li>
+      <li class="kartu manfaat">
+        <span class="manfaat-ikon" aria-hidden="true">✓</span>
+        <h3>Cocok untuk toko dan oleh-oleh</h3>
+        <p>Ukuran 100–200 gram sampai bulk, buat rak toko, kios, atau paket oleh-oleh.</p>
+      </li>
+      <li class="kartu manfaat">
+        <span class="manfaat-ikon" aria-hidden="true">✓</span>
+        <h3>Bisa mulai dari jumlah tertentu</h3>
+        <p>Order pertama minimal 1 kilo, dan boleh ambil sampel dulu sebelum commit.</p>
+      </li>
+    </ul>
+
+    <div class="cta-blok cta-reseller">
+      <div>
+        <h3 class="cta-judul">Mulai jadi reseller {{brand.name}}</h3>
+        <p class="cta-teks">
+          Ceritakan nama toko, kota, dan target order per bulan. Nanti kami kirim
+          pricelist per volume, sekalian cara gabungin ke keripik yang lagi laku.
+        </p>
+      </div>
+      <a class="btn btn-merah btn-besar"
+         href="{{wa.reseller}}"
+         target="_blank" rel="noopener noreferrer">Tanya Program Reseller</a>
+    </div>
+
+    <div class="reseller-grid">
+      <div>
+        <h3 class="sub-judul-sub">Yang Anda dapat</h3>
+        <ul class="daftar-cek daftar-cek-luas">
+          <li><strong>Mulai dari sampel.</strong> Order pertama minimal 1 kilo, jadi tidak perlu modal besar atau gudang.</li>
+          <li><strong>Harga per kilo, turun sesuai volume.</strong> Pricelist lengkap kami kirim setelah Anda daftar.</li>
+          <li><strong>Bisa repack dengan label sendiri.</strong> Repack datang dalam bulk, repack memakai label toko Anda, silica gel, atau display sendiri.</li>
+          <li><strong>Foto produk untuk jualan.</strong> Foto produknya boleh dipakai buat katalog dan konten media sosial toko Anda.</li>
+        </ul>
+
+        <h3 class="sub-judul-sub">Pertanyaan yang sering masuk</h3>
+        <dl class="tanya-jawab">
+          <dt>Minimum order berapa?</dt>
+          <dd>Reseller baru boleh ambil sampel dulu. Untuk order pertama, minimal 1 kilo.</dd>
+          <dt>Harga dan marginnya berapa?</dt>
+          <dd>Daftar harga per kilo dikirim setelah Anda daftar, lengkap dengan rentang harga per volume.</dd>
+          <dt>Bisa kirim ke luar Jawa?</dt>
+          <dd>Bisa, via ekspedisi. Ongkos kirim mengikuti berat, jadi untuk volume besar ongkir per kilo lebih murah.</dd>
+          <dt>Bagaimana cara memulai?</dt>
+          <dd>Chat admin, minta pricelist dan sampel, tasting, lalu konfirmasi order. Sisanya tinggal jualan di sekitar Anda.</dd>
+        </dl>
+
+        <h3 class="sub-judul-sub">Paket isi</h3>
+        <ul class="grid-paket">
+          <li class="kartu paket"><strong>Repack 1 kg</strong><span>Siap repack ke toko sendiri.</span></li>
+          <li class="kartu paket"><strong>Repack 5 kg</strong><span>Buat yang sudah rutin jualan di sekitaran sendiri.</span></li>
+          <li class="kartu paket"><strong>Repack 25 kg</strong><span>Stok gudang untuk reseller aktif dan repeat order.</span></li>
+        </ul>
+
+        <figure class="foto-reseller">
+          <picture>
+            <source type="image/webp"
+                    srcset="assets/produk/karung-bulk-480.webp 480w,
+                            assets/produk/karung-bulk-900.webp 900w,
+                            assets/produk/karung-bulk-1400.webp 1400w"
+                    sizes="(max-width: 1000px) 90vw, 44vw">
+            <img src="assets/produk/karung-bulk-1400.jpg"
+                 srcset="assets/produk/karung-bulk-480.jpg 480w,
+                         assets/produk/karung-bulk-900.jpg 900w,
+                         assets/produk/karung-bulk-1400.jpg 1400w"
+                 sizes="(max-width: 1000px) 90vw, 44vw"
+                 width="1600" height="1200"
+                 alt="Karung-karung keripik tempe bulk siap dikirim ke partner reseller"
+                 loading="lazy" decoding="async">
+          </picture>
+          <figcaption>Karung bulk siap kirim. Label dan repack terserah kamu.</figcaption>
+        </figure>
+      </div>
+
+      <div class="kartu formulir">
+        <h3>Ambil pricelist reseller</h3>
+        <p class="form-ket">Isi seperlunya, terus kirim lewat WhatsApp. Nanti kami balas daftar harga per volumenya.</p>
+
+        <noscript>
+          <p class="form-fallback">Form ini membutuhkan JavaScript. <a href="{{wa.reseller}}">Chat admin lewat WhatsApp</a> untuk minta pricelist.</p>
+        </noscript>
+
+        <form id="form-reseller" method="post" onsubmit="return false" novalidate>
+          <label for="rs-nama">Nama / nama toko</label>
+          <input id="rs-nama" name="nama" type="text" placeholder="Contoh: Toko Berkah Jaya" autocomplete="name" required>
+
+          <label for="rs-kota">Kota</label>
+          <input id="rs-kota" name="kota" type="text" placeholder="Contoh: Bogor" autocomplete="address-level2" required>
+
+          <label for="rs-target">Target order per bulan</label>
+          <input id="rs-target" name="target" type="text" placeholder="Contoh: 10 kg">
+
+          <label for="rs-pesan">Catatan (opsional)</label>
+          <textarea id="rs-pesan" name="pesan" rows="3" placeholder="Ceritakan rencana jualanmu sebentar"></textarea>
+
+          <button class="btn btn-merah btn-besar btn-penuh" type="submit">Kirim Permintaan Reseller</button>
+          <p class="form-catatan">Tombol ini membuka WhatsApp dengan pesan yang sudah terisi. Nggak ada data yang disimpan di website ini.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 7. FAQ ================= -->
+<section class="section section-alt" id="faq" aria-labelledby="faq-judul">
+  <div class="container container-narrow">
+    <p class="label-seksi">Pertanyaan yang sering masuk</p>
+    <h2 id="faq-judul" class="judul-seksi">FAQ</h2>
+
+    {{#each faq}}
+    <details class="faq-item">
+      <summary>{{q}}</summary>
+      <div class="faq-jawab">
+        <p>{{a}}</p>
+      </div>
+    </details>
+    {{/each}}
+  </div>
+</section>
+
+<!-- ================= CTA SEBELUM FOOTER ================= -->
+<section class="section closing" aria-labelledby="closing-judul">
+  <div class="container closing-inner">
+    <p class="label-seksi label-terang">Tinggal satu langkah</p>
+    <h2 id="closing-judul" class="judul-seksi judul-terang">Mau coba dulu? Chat admin aja</h2>
+    <p class="cta-teks cta-teks-terang">
+      Harga, stok, ongkir, sampai rekomendasi varian, semua dijawab admin yang
+      siap membantu.
+    </p>
+    <a class="btn btn-wa btn-besar"
+       href="{{wa.closing}}"
+       target="_blank" rel="noopener noreferrer">Pesan lewat WhatsApp</a>
+    <p class="closing-catatan">{{contact.hours}} · {{contact.address.city}}, {{contact.address.province}}</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= 8. FOOTER ================= -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <img src="assets/logo.webp" width="180" height="126" alt="Logo {{brand.fullName}}" loading="lazy" class="footer-logo">
+      <p class="footer-lockup">
+        <span class="footer-nama">Keripik Tempe<br>Tiga Saudara</span>
+        <strong class="footer-354">354</strong>
+        <span class="footer-khas">Khas Bogor</span>
+      </p>
+      <p class="footer-tagline">Keripik tempe dari Bogor. Tipis, renyah dan gurih.</p>
+    </div>
+
+    <nav class="footer-nav" aria-label="Navigasi footer">
+      <div>
+        <h2>Belanja</h2>
+        <ul>
+          <li><a href="#produk">Varian keripik</a></li>
+          <li><a href="#oleh-oleh">Oleh-oleh Bogor</a></li>
+          <li><a href="#foto">Foto produk</a></li>
+          <li><a href="#cerita">Cara membuatnya</a></li>
+          <li><a href="#lokasi">Lokasi &amp; jam buka</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Mitra</h2>
+        <ul>
+          <li><a href="#reseller">Jadi reseller</a></li>
+          <li><a href="#reseller">Ambil pricelist</a></li>
+          <li><a href="#testimoni">Kirim ulasan</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="footer-kontak">
+      <h2>Hubungi kami</h2>
+      <ul>
+        <li>
+          <span>WhatsApp / Telepon</span>
+          <p>
+            <a href="{{wa.footer}}" target="_blank" rel="noopener noreferrer">{{contact.whatsapp.display}}</a>
+            · <a href="tel:{{contact.whatsapp.tel}}">Telepon</a>
+          </p>
+        </li>
+        <li>
+          <span>Alamat</span>
+          <p>{{contact.address.full}}<br><a href="{{contact.mapsUrl}}" target="_blank" rel="noopener noreferrer">Lihat di Google Maps</a></p>
+        </li>
+        <li>
+          <span>Jam operasional</span>
+          <p>{{contact.hours}}</p>
+        </li>
+        <li>
+          <span>Sosial media</span>
+          <p class="footer-sosmed">
+            {{#if social.instagram.url}}
+            <a href="{{social.instagram.url}}" target="_blank" rel="me noopener noreferrer">
+              <svg class="ikon-sosmed" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9Zm0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5Zm4.75-3.25a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5Z"/>
+              </svg>
+              <span>{{social.instagram.label}}</span>
+            </a>
+            {{/if}}
+            {{#if social.facebook.url}}
+            <a href="{{social.facebook.url}}" target="_blank" rel="me noopener noreferrer">
+              <svg class="ikon-sosmed" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path fill="currentColor" d="M13.5 21v-7.5H16l.4-3h-2.9V8.6c0-.9.3-1.5 1.6-1.5h1.4V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H8v3h2.3V21h3.2Z"/>
+              </svg>
+              <span>{{social.facebook.label}}</span>
+            </a>
+            {{/if}}
+            {{#if social.tiktok.url}}
+            <a href="{{social.tiktok.url}}" target="_blank" rel="me noopener noreferrer">
+              <svg class="ikon-sosmed" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path fill="currentColor" d="M16.6 3c.4 2.2 1.6 3.6 3.9 3.8v2.8c-1.4.1-2.7-.3-3.9-1v6.1c0 3.5-2.6 5.8-5.7 5.8-3 0-5.4-2.2-5.4-5.2 0-3.2 2.6-5.5 5.9-5.2v2.9c-.3-.1-.7-.2-1-.2-1.5 0-2.7 1.1-2.7 2.5 0 1.4 1.1 2.4 2.5 2.4 1.6 0 2.7-1.1 2.7-2.8V3h3.7Z"/>
+              </svg>
+              <span>{{social.tiktok.label}}</span>
+            </a>
+            {{/if}}
+          </p>
+        </li>
+        <li>
+          <span>Legalitas produk</span>
+          <p>Halal · P-IRT {{legal.pirt}} · BPOM MD {{legal.bpom}}</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container footer-bawah">
+    <p>© <span id="tahun">{{year}}</span> <b>{{brand.name}}</b>. P-IRT {{legal.pirt}} · BPOM MD {{legal.bpom}}.</p>
+    <p>Semua foto di halaman ini berasal dari rak toko &amp; workshop kami sendiri.</p>
+  </div>
+</footer>
+
+<!-- ================= CTA MENGAMBANG + BAR BAWAH (mobile) ================= -->
+<aside class="aksi-cepat" aria-label="Aksi cepat">
+<div class="sosmed-apung" data-sosmed>
+  <button class="sosmed-toggle" type="button"
+          aria-expanded="false" aria-controls="sosmed-panel"
+          aria-label="Buka tautan sosial media">
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
+      <g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round">
+        <circle cx="6" cy="12" r="2.6"/>
+        <circle cx="17.5" cy="5.5" r="2.6"/>
+        <circle cx="17.5" cy="18.5" r="2.6"/>
+        <path d="M8.4 10.8 15.1 6.9M8.4 13.2l6.7 3.9"/>
+      </g>
+    </svg>
+    <span>Sosmed</span>
+  </button>
+
+  <div class="sosmed-panel" id="sosmed-panel">
+    <p class="sosmed-panel-judul">Ikuti kami</p>
+    <ul class="sosmed-daftar">
+      {{#if social.instagram.url}}
+      <li>
+        <a href="{{social.instagram.url}}" target="_blank" rel="me noopener noreferrer">
+          <span class="sosmed-ikon">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9Zm0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5Zm4.75-3.25a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5Z"/>
+            </svg>
+          </span>
+          <span class="sosmed-teks">
+            <b>{{social.instagram.label}}</b>
+            <span>{{social.instagram.handle}}</span>
+          </span>
+        </a>
+      </li>
+      {{/if}}
+      {{#if social.facebook.url}}
+      <li>
+        <a href="{{social.facebook.url}}" target="_blank" rel="me noopener noreferrer">
+          <span class="sosmed-ikon">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M13.5 21v-7.5H16l.4-3h-2.9V8.6c0-.9.3-1.5 1.6-1.5h1.4V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H8v3h2.3V21h3.2Z"/>
+            </svg>
+          </span>
+          <span class="sosmed-teks">
+            <b>{{social.facebook.label}}</b>
+            <span>{{social.facebook.handle}}</span>
+          </span>
+        </a>
+      </li>
+      {{/if}}
+      {{#if social.tiktok.url}}
+      <li>
+        <a href="{{social.tiktok.url}}" target="_blank" rel="me noopener noreferrer">
+          <span class="sosmed-ikon">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M16.6 3c.4 2.2 1.6 3.6 3.9 3.8v2.8c-1.4.1-2.7-.3-3.9-1v6.1c0 3.5-2.6 5.8-5.7 5.8-3 0-5.4-2.2-5.4-5.2 0-3.2 2.6-5.5 5.9-5.2v2.9c-.3-.1-.7-.2-1-.2-1.5 0-2.7 1.1-2.7 2.5 0 1.4 1.1 2.4 2.5 2.4 1.6 0 2.7-1.1 2.7-2.8V3h3.7Z"/>
+            </svg>
+          </span>
+          <span class="sosmed-teks">
+            <b>{{social.tiktok.label}}</b>
+            <span>{{social.tiktok.handle}}</span>
+          </span>
+        </a>
+      </li>
+      {{/if}}
+    </ul>
+  </div>
+</div>
+
+<a class="wa-apung"
+   href="{{wa.floating}}"
+   target="_blank" rel="noopener noreferrer" aria-label="Pesan lewat WhatsApp">
+  <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true" focusable="false">
+    <path fill="currentColor" d="M16 3C8.8 3 3 8.8 3 16c0 2.3.6 4.5 1.7 6.4L3 29l6.8-1.7A13 13 0 1 0 16 3Zm0 23.6c-2 0-3.9-.5-5.6-1.5l-.4-.2-4 1 1.1-3.9-.3-.4A10.6 10.6 0 1 1 16 26.6Zm5.9-7.9c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7 0a8.7 8.7 0 0 1-2.6-1.6 9.7 9.7 0 0 1-1.8-2.2c-.2-.3 0-.5.1-.6l.5-.6c.2-.2.2-.3.3-.5s0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4a3.2 3.2 0 0 0-1 2.4 5.6 5.6 0 0 0 1.2 3 12.8 12.8 0 0 0 4.9 4.4c1.8.7 2.4.7 3.3.6a2.9 2.9 0 0 0 2-1.4 2.3 2.3 0 0 0 .2-1.4c-.1-.1-.3-.2-.6-.3Z"/>
+  </svg>
+  <span>Pesan</span>
+</a>
+
+<div class="bar-bawah">
+  <p class="bar-teks">Mau pesan keripik tempe?<span>Admin balas cepat, hari kerja {{contact.hoursShort}}</span></p>
+  <a class="btn btn-wa"
+     href="{{wa.bar}}"
+     target="_blank" rel="noopener noreferrer">Pesan via WA</a>
+</div>
+</aside>
+
+<textarea id="wa-reseller-template" hidden>{{whatsapp.templates.resellerForm}}</textarea>
+<script src="js/main.js" defer></script>
+</body>
+</html>

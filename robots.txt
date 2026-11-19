@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://keripiktempe354.id/sitemap.xml
+# Sitemap akan aktif setelah site.url diisi di site.config.json.

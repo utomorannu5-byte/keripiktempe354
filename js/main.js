@@ -1,12 +1,18 @@
 /* ==========================================================================
-   Keripik Tempe Tiga Saudara 354 — JavaScript minimal (tanpa library)
+   Tiga Saudara 354 — JavaScript minimal (tanpa library)
+
    Isi:
    1. Menu mobile
    2. Efek muncul saat scroll
    3. Running text (marquee)
    4. Form reseller -> WhatsApp
-   5. Tahun di footer
-   Semua opsional: halaman tetap berfungsi penuh tanpa JavaScript.
+   5. Tombol sosial mengambang
+   6. Tahun di footer
+
+   Semua data bisnis (nomor WhatsApp, template pesan) berasal dari HTML
+   hasil generate site.config.json. Tidak ada nomor atau pesan hardcode.
+   Tanpa JavaScript, isi halaman, FAQ, dan CTA WhatsApp tetap jalan; yang
+   membutuhkan JavaScript hanya menu mobile dan form reseller.
    ========================================================================== */
 
 (function () {
@@ -48,8 +54,8 @@
 
   var elemenReveal = document.querySelectorAll(
     ".grid-4 > li, .produk, .cerita-grid > *, .trust-list > li, .foto-strip > li," +
-    " .oleh-oleh-grid > *, .testimoni-kosong, .reseller-grid > *," +
-    " .reseller-manfaat > li, .nama-354-kartu, .faq-item," +
+    " .oleh-oleh-grid > *, .lokasi-grid > *, .testimoni-kosong, .reseller-grid > *," +
+    " .reseller-manfaat > li, .faq-item," +
     " .cta-blok, .closing-inner"
   );
 
@@ -93,14 +99,22 @@
     var grup = track.querySelector(".marquee-grup");
     if (!grup) return;
 
+    // Tanpa animasi, satu salinan sudah cukup dan tetap bisa digeser.
+    if (kurangiGerak) return;
+
     var salinan = grup.cloneNode(true);
     salinan.setAttribute("aria-hidden", "true");
     track.appendChild(salinan);
+
+    var wadah = track.closest(".marquee");
+    if (wadah) wadah.classList.add("siap");
+
     track.classList.add("siap");
   });
 
   /* ---------- 4. FORM RESELLER -> WHATSAPP ---------- */
   var formReseller = document.getElementById("form-reseller");
+  var templateReseller = document.getElementById("wa-reseller-template");
 
   if (formReseller) {
     formReseller.addEventListener("submit", function (event) {
@@ -121,22 +135,72 @@
         return;
       }
 
-      var baris = [
-        "Halo, saya tertarik jadi reseller Keripik Tempe Tiga Saudara 354.",
-        "Nama: " + nama,
-        "Kota: " + kota
-      ];
-      if (target) baris.push("Target order per bulan: " + target);
-      if (pesan) baris.push("Catatan: " + pesan);
-      baris.push("", "Mohon info harga reseller, minimum order, dan daftar region yang dilayani ya. Terima kasih!");
+      var nomor = document.body.getAttribute("data-wa");
+      var template = templateReseller ? templateReseller.textContent.trim() : "";
 
-      var nomor = document.body.getAttribute("data-wa") || "6281234567890";
+      if (!nomor || !template) {
+        alert("Maaf, nomor WhatsApp belum siap. Coba lagi sebentar.");
+        return;
+      }
+
+      var nilai = {
+        nama: nama,
+        kota: kota,
+        target: target,
+        pesan: pesan
+      };
+
+      var baris = template
+        .split("\n")
+        .filter(function (baris) {
+          if (baris.indexOf("{target}") !== -1 && !target) return false;
+          if (baris.indexOf("{pesan}") !== -1 && !pesan) return false;
+          return true;
+        })
+        .map(function (baris) {
+          return baris.replace(/\{(nama|kota|target|pesan)\}/g, function (_, key) {
+            return nilai[key] || "";
+          });
+        });
+
       var tautan = "https://wa.me/" + nomor + "?text=" + encodeURIComponent(baris.join("\n"));
       window.open(tautan, "_blank", "noopener");
     });
   }
 
-  /* ---------- 5. TAHUN DI FOOTER ---------- */
+  /* ---------- 5. TOMBOL SOSIAL MENGAMBANG ---------- */
+  var sosmed = document.querySelector("[data-sosmed]");
+
+  if (sosmed) {
+    var tombolSosmed = sosmed.querySelector(".sosmed-toggle");
+    var panelSosmed = sosmed.querySelector(".sosmed-panel");
+
+    var tutupSosmed = function () {
+      sosmed.classList.remove("is-terbuka");
+      tombolSosmed.setAttribute("aria-expanded", "false");
+    };
+
+    tombolSosmed.addEventListener("click", function (event) {
+      event.stopPropagation();
+      var terbuka = sosmed.classList.toggle("is-terbuka");
+      tombolSosmed.setAttribute("aria-expanded", terbuka ? "true" : "false");
+    });
+
+    // Tutup setelah salah satu tautan dipilih
+    panelSosmed.addEventListener("click", function (event) {
+      if (event.target.closest("a")) tutupSosmed();
+    });
+
+    // Tutup saat klik di luar atau tekan Escape
+    document.addEventListener("click", function (event) {
+      if (!sosmed.contains(event.target)) tutupSosmed();
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") tutupSosmed();
+    });
+  }
+
+  /* ---------- 6. TAHUN DI FOOTER ---------- */
   var tahun = document.getElementById("tahun");
   if (tahun) tahun.textContent = String(new Date().getFullYear());
 })();

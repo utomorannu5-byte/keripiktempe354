@@ -1,0 +1,171 @@
+{
+  "site": {
+    "url": "",
+    "domainStatus": "pending-firebase",
+    "locale": "id_ID",
+    "title": "Tiga Saudara 354 | Keripik Tempe Renyah Khas Bogor",
+    "description": "Keripik Tempe Tiga Saudara 354 khas Bogor. Tempe kedelai dan tapioka diiris tipis, digoreng bareng bawang putih dan cabai. Tipis, renyah, gurih bawang. Halal, P-IRT 211320101004820. Pesan via WhatsApp, tersedia untuk reseller dan oleh-oleh Bogor.",
+    "ogDescription": "Tempe diiris tipis, digoreng bareng bawang putih dan cabai. Tipis, renyah, gurih bawang. Enak buat teman ngopi. Khas Bogor.",
+    "keywords": "354, keripik tempe 354, keripik tempe Bogor, keripik tempe renyah, keripik tempe Tiga Saudara 354, camilan khas Bogor, oleh-oleh Bogor, keripik tempe reseller",
+    "author": "Tiga Saudara 354",
+    "themeColor": "#d8231f",
+    "backgroundColor": "#fdf8f0"
+  },
+  "brand": {
+    "name": "Tiga Saudara 354",
+    "fullName": "Keripik Tempe Tiga Saudara 354",
+    "productName": "Keripik Tempe",
+    "tagline": "Tipis, renyah, gurih bawang.",
+    "description": "Produsen keripik tempe khas Bogor. Tempe kedelai dan tapioka diiris tipis, digoreng dengan bumbu pilihan, dikemas rapat."
+  },
+  "contact": {
+    "whatsapp": {
+      "international": "6289519142713",
+      "display": "0895-1914-2713"
+    },
+    "address": {
+      "full": "Gunung Putri Selatan No. 80, RT 02/RW 06, Gunung Putri, Bogor 16961",
+      "street": "Gunung Putri Selatan No. 80",
+      "rt": "02",
+      "rw": "06",
+      "district": "Gunung Putri",
+      "city": "Bogor",
+      "province": "Jawa Barat",
+      "postalCode": "16961",
+      "country": "ID"
+    },
+    "hours": "Senin–Sabtu, 08.00–17.00 WIB",
+    "hoursShort": "08.00–17.00",
+    "hoursSchema": "Mo-Sa 08:00-17:00"
+  },
+  "social": {
+    "instagram": {
+      "label": "Instagram",
+      "handle": "@keripiktigasaudara",
+      "url": "https://www.instagram.com/keripiktigasaudara/"
+    },
+    "facebook": {
+      "label": "Facebook",
+      "handle": "@bayextlukan",
+      "url": "https://www.facebook.com/bayextlukan"
+    },
+    "tiktok": {
+      "label": "TikTok",
+      "handle": "@keripiktigasaudara",
+      "url": "https://www.tiktok.com/@keripiktigasaudara"
+    }
+  },
+  "marketplaces": [],
+  "legal": {
+    "halal": true,
+    "pirt": "211320101004820",
+    "bpom": "211320101004820"
+  },
+  "products": [
+    {
+      "id": "160",
+      "name": "Keripik Tempe 160 gram",
+      "weight": 160,
+      "price": null,
+      "priceLabel": null,
+      "meta": "Berat bersih 160 gram · Kemasan resmi brand",
+      "description": "Kemasan resmi yang paling sering diambil dari rak. Dikemas rapat biar tetap renyah.",
+      "image": {
+        "base": "assets/produk/rak-kemasan",
+        "widths": [480, 900, 1200],
+        "width": 1200,
+        "height": 1600,
+        "alt": "Kemasan resmi Keripik Tempe Tiga Saudara 354 di rak toko",
+        "sizes": "(max-width: 720px) 88vw, (max-width: 1080px) 44vw, 30vw"
+      },
+      "badge": "Paling laku",
+      "badgePlain": false
+    },
+    {
+      "id": "200",
+      "name": "Keripik Tempe 200 gram",
+      "weight": 200,
+      "price": null,
+      "priceLabel": null,
+      "meta": "Berat bersih 200 gram · Kemasan toko",
+      "description": "Buat stok di rumah, atau buat dicocol sambal. Kuat nempel di tangan dan nggak gampang hancur.",
+      "image": {
+        "base": "assets/produk/label-harga",
+        "widths": [480, 900, 1200],
+        "width": 1200,
+        "height": 1600,
+        "alt": "Tangan memegang kemasan Keripik Tempe Tiga Saudara 354 di rak toko",
+        "sizes": "(max-width: 720px) 88vw, (max-width: 1080px) 44vw, 30vw"
+      },
+      "badge": null,
+      "badgePlain": false
+    },
+    {
+      "id": "100",
+      "name": "Keripik Tempe 100 gram",
+      "weight": 100,
+      "price": null,
+      "priceLabel": null,
+      "meta": "Berat bersih 100 gram · Kemasan retail",
+      "description": "Paling cocok untuk dicoba, buat oleh-oleh, atau buat ngemil dan temen ngopi. Renyahnya tetap sama.",
+      "image": {
+        "base": "assets/produk/proses-kemasan",
+        "widths": [480, 900, 1200],
+        "width": 1200,
+        "height": 1600,
+        "alt": "Irisan keripik tempe di dalam karung sebelum dikemas",
+        "sizes": "(max-width: 720px) 88vw, (max-width: 1080px) 44vw, 30vw"
+      },
+      "badge": "Buat coba dulu",
+      "badgePlain": true
+    }
+  ],
+  "faq": [
+    {
+      "q": "Keripik tempe ini sudah ada izinnya?",
+      "a": "Sudah. P-IRT 211320101004820 dan izin BPOM MD tercantum di kemasan, dan logo halalnya kelihatan di label. Kalau mau lihat komposisi lengkap (kedelai, tapioka, minyak sawit & bumbu), cek label di kemasan atau minta fotonya lewat WhatsApp."
+    },
+    {
+      "q": "Bedanya yang 100 gram, 160 gram, sama 200 gram apa?",
+      "a": "Isi dan kemasannya. Isinya sama-sama tempe digoreng. Yang 100 gram paling ringan buat nyoba, 160 gram kemasan resmi brand, 200 gram buat stok di rumah."
+    },
+    {
+      "q": "Bisa ambil sendiri? Di mana?",
+      "a": "Bisa. Alamat kami di Gunung Putri Selatan No. 80, RT 02/RW 06, Gunung Putri, Bogor 16961. Produknya juga ada di rak AEON dan beberapa minimarket. Kalau mau mampir, chat admin dulu ya."
+    },
+    {
+      "q": "Berapa ongkir ke luar Jawa?",
+      "a": "Ongkir dihitung dari berat dan kota tujuan. Karena harga bisa berubah tiap hari, sekalian chat admin biar ongkir dan stoknya dicek bareng."
+    },
+    {
+      "q": "Gimana cara pesan?",
+      "a": "Cukup WhatsApp. Pilih varian yang mau, sebutkan jumlah, kirim alamat. Sisanya kami bantu rekomendasikan pengiriman termurah."
+    },
+    {
+      "q": "Kok ada keripik yang warnanya lebih gelap?",
+      "a": "Itu normal, bagian pinggiran lebih dulu kecokelatan waktu digoreng. Kalau ada yang terasa aneh atau berubah rasa, kirim foto dan nota, kami ganti."
+    },
+    {
+      "q": "Ada sampel buat reseller?",
+      "a": "Ada. Reseller baru bisa ambil sampel dulu sebelum order besar. Detailnya kita bahas langsung di WhatsApp."
+    }
+  ],
+  "whatsapp": {
+    "templates": {
+      "general": "Halo Kak Tiga Saudara 354! 👋\n\nSaya lihat keripik tempe Tiga Saudara 354 di website.\n\nBoleh info harga, varian yang tersedia, dan cara pemesanannya? Terima kasih!",
+      "header": "Halo Kak Tiga Saudara 354! 👋\n\nSaya lihat keripik tempe Tiga Saudara 354 di website.\n\nBoleh info harga, varian yang tersedia, dan cara pemesanannya? Terima kasih!",
+      "hero": "Halo Kak Tiga Saudara 354! 👋\n\nSaya mau pesan keripik tempe.\n\nMohon info harga terbaru, stok, dan cara pesanannya ya. Terima kasih!",
+      "product": "Halo Kak Tiga Saudara 354! 👋\n\nSaya mau pesan {product}.\n\nMohon info harga terbaru, stok, dan cara pesanannya ya. Terima kasih!",
+      "variantHelp": "Halo Kak Tiga Saudara 354! 👋\n\nSaya mau tanya varian keripik tempe yang paling cocok.\n\nBoleh dibantu pilihkan? Terima kasih!",
+      "reseller": "Halo Kak Tiga Saudara 354! 👋\n\nSaya mau tanya program reseller keripik tempe 354.\n\nBoleh info harga reseller, minimum order, dan pricelist per volume-nya? Terima kasih!",
+      "resellerForm": "Halo, saya tertarik jadi reseller Keripik Tempe Tiga Saudara 354.\nNama: {nama}\nKota: {kota}\nTarget order per bulan: {target}\nCatatan: {pesan}\n\nMohon info harga reseller, minimum order, dan daerah yang dilayani ya. Terima kasih!",
+      "review": "Halo Kak Tiga Saudara 354! 👋\n\nSaya pernah beli keripik tempenya dan mau kirim review saya.\n\nBoleh ditaruh di website? Terima kasih!",
+      "gift": "Halo Kak Tiga Saudara 354! 👋\n\nSaya mau pesan keripik tempe buat oleh-oleh.\n\nMohon info harga, kemasan yang cocok, dan ongkirnya ya. Terima kasih!",
+      "visit": "Halo Kak Tiga Saudara 354! 👋\n\nSaya mau mampir ke workshop. Boleh info patokan lokasi dan jam bukanya? Terima kasih!",
+      "closing": "Halo Kak Tiga Saudara 354! 👋\n\nSaya mau pesan keripik tempe.\n\nMohon info harga terbaru, stok, ongkir, dan cara pesanannya ya. Terima kasih!",
+      "footer": "Halo Kak Tiga Saudara 354! 👋\n\nSaya mau tanya keripik tempe.\n\nTerima kasih!",
+      "floating": "Halo Kak Tiga Saudara 354! 👋\n\nSaya mau pesan keripik tempe.\n\nMohon info harga terbaru, stok, dan cara pesanannya ya. Terima kasih!",
+      "bar": "Halo Kak Tiga Saudara 354! 👋\n\nSaya mau pesan keripik tempe.\n\nMohon info harga terbaru, stok, dan cara pesanannya ya. Terima kasih!"
+    }
+  }
+}
