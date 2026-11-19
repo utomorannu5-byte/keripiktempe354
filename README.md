@@ -93,25 +93,24 @@ firebase deploy
 Saat inisialisasi Firebase Hosting, arahkan `public` ke folder ini
 (`static-site`) atau salin file hasil generate ke folder public Firebase.
 
-### Domain belum tersedia
+### URL produksi
 
-`site.url` di `site.config.json` sengaja masih kosong karena project/domain
-Firebase belum ditentukan. Selama kosong, build akan menulis peringatan dan:
-
-- `canonical`, `og:url`, `og:image`, dan `twitter:image` tidak ditulis;
-- URL absolut di JSON-LD tidak ditulis;
-- `sitemap.xml` masih kosong dan `robots.txt` belum menunjuk sitemap.
-
-Setelah URL Firebase didapat, isi:
+Domain Firebase Hosting sudah aktif dan diisi di `site.config.json`:
 
 ```json
 "site": {
-  "url": "https://nama-project.web.app"
+  "url": "https://keripiktigasaudara354.web.app"
 }
 ```
 
-lalu jalankan `node tools/build.mjs` lagi. Semua URL absolut, sitemap, dan
-`robots.txt` akan aktif otomatis.
+Karena `site.url` terisi, build menulis `canonical`, `og:url`, `og:image`,
+`twitter:image`, URL absolut di JSON-LD, isi `sitemap.xml`, dan baris `Sitemap:`
+di `robots.txt`.
+
+Kalau nanti pindah domain (misalnya domain sendiri), cukup ubah satu nilai itu
+lalu jalankan `node tools/build.mjs` lagi. Kalau `site.url` dikosongkan, build
+akan menulis peringatan dan mematikan semua URL absolut, sitemap, serta baris
+sitemap di `robots.txt`.
 
 ## Cara mengubah data
 

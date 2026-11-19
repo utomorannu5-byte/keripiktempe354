@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-# Sitemap akan aktif setelah site.url diisi di site.config.json.
+Sitemap: https://keripiktigasaudara354.web.app/sitemap.xml
