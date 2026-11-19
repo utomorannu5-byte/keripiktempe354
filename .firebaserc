@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "keripiktigasaudara354-62e45"
+  },
+  "targets": {
+    "keripiktigasaudara354-62e45": {
+      "hosting": {
+        "site-baru": [
+          "keripiktigasaudara354"
+        ]
+      }
+    }
+  }
+}
